@@ -1,0 +1,16 @@
+.anchor
+{
+  color: #cc3333;
+  &:hover
+  {
+      color: #333399;
+  }
+  &:visited
+  {
+      color: #669900;
+  }
+  &:active
+  {
+      color: #ff6600;
+  }
+}

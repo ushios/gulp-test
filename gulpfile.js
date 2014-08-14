@@ -1,5 +1,13 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-gulp.task('default', function(){ 
-  console.log('Hello World'); 
-}); 
+var gulputil = require('gulp-util');
+var sass = require('gulp-sass');
+
+gulp.task('default', function(){
+    gulp.run('sass');
+});
+
+gulp.task('sass', function () { 
+    gulp.src('./assets/scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./assets/css')); 
+});
