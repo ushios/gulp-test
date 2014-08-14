@@ -6,6 +6,15 @@ Dependencies
 
 * sass
 
+Get started.
+------------
+
+### 1.Install npm packages
+
+    $ npm install
+
+
+
 Command log
 ------------
 
