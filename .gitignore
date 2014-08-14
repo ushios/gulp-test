@@ -1,0 +1,7 @@
+
+# npm
+lib-cov
+node_modules
+pids
+logs
+results
