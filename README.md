@@ -9,7 +9,11 @@ Dependencies
 Get started.
 ------------
 
-### 1.Install npm packages
+### 1. Install global npm packages.
+
+    $ npm install -g gulp browser-sync
+
+### 2. Install local npm packages
 
     $ npm install
 
