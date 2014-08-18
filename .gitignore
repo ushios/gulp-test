@@ -1,4 +1,5 @@
-assets/css
+web/assets
+!web/assets/.gitkeep
 
 # npm
 lib-cov

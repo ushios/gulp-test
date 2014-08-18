@@ -16,7 +16,8 @@
     "gulp-csso": "^0.2.9",
     "jshint-stylish": "^0.4.0",
     "gulp-jshint": "^1.8.4",
-    "browser-sync": "^1.3.5"
+    "browser-sync": "^1.3.5",
+    "gulp-uglifyjs": "^0.4.2"
   },
   "repository": {
     "type": "git",

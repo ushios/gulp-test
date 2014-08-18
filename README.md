@@ -32,4 +32,4 @@ Command log
 
 ### Javascript plugins.
 
-    $ npm install --save-dev gulp-jshint jshint-stylish
+    $ npm install --save-dev gulp-jshint jshint-stylish gulp-uglifyjs
