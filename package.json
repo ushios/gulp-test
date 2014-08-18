@@ -19,7 +19,8 @@
     "browser-sync": "^1.3.5",
     "gulp-uglifyjs": "^0.4.2",
     "gulp-htmlhint": "0.0.9",
-    "gulp-minify-html": "^0.1.4"
+    "gulp-minify-html": "^0.1.4",
+    "gulp-watch": "^0.6.9"
   },
   "repository": {
     "type": "git",

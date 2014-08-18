@@ -21,15 +21,17 @@ Get started.
 Using browser-sync
 -------------------
 
+    $ gulp watch
+    /* open new terminal */
     $ cd web
-    $ browser-sync start --files="**" --server
+    $ browser-sync start --files="./**" --server
 
 Command log
 ------------
 
 ### Genral plugins.
 
-    $ npm install --save-dev gulp@3.6.2 gulp-util
+    $ npm install --save-dev gulp@3.6.2 gulp-util gulp-watch
 
 ### Css plugins.
 

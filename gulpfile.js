@@ -14,8 +14,22 @@ var csso = require('gulp-csso');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglifyjs');
 
-gulp.task('default',['uglify', 'css', 'minify-html'], function(){
+gulp.task('default',['uglify', 'minify-css', 'minify-html'], function(){
 
+});
+
+gulp.task('watch', function(){
+	gulp.watch('./src/js/**/*.js', function(e){
+		gulp.run('uglify');
+	});
+
+	gulp.watch('./src/html/**/*.html', function(e){
+		gulp.run('minify-html');
+	});
+
+	gulp.watch('./src/scss/**/*.scss', function(e){
+		gulp.run('minify-css');
+	});
 });
 
 gulp.task('uglify', ['js-hint'], function(){
@@ -43,7 +57,7 @@ gulp.task('html-hint', function(){
 	.pipe(htmlhint.reporter())
 })
 
-gulp.task('css', function () { 
+gulp.task('minify-css', function () { 
 	return gulp.src('./src/scss/*.scss')
 	.pipe(sass())
 	.pipe(minifyCss())
