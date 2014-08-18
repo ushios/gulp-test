@@ -18,6 +18,11 @@ Get started.
     $ npm install
 
 
+Using browser-sync
+-------------------
+
+    $ cd web
+    $ browser-sync start --files="**" --server
 
 Command log
 ------------
