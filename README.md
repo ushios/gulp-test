@@ -38,3 +38,7 @@ Command log
 ### Javascript plugins.
 
     $ npm install --save-dev gulp-jshint jshint-stylish gulp-uglifyjs
+
+### HTML plugins.
+
+    $ npm install --save-dev gulp-htmlhint gulp-minify-html
