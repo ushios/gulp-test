@@ -40,6 +40,7 @@ gulp.task('minify-html', ['html-hint'],function(){
 gulp.task('html-hint', function(){
 	return gulp.src(['./src/html/**/*.html'])
 	.pipe(htmlhint())
+	.pipe(htmlhint.reporter())
 })
 
 gulp.task('css', function () { 
