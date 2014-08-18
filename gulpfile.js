@@ -18,7 +18,7 @@ gulp.task('default',['uglify', 'minify-css', 'minify-html'], function(){
 
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', ['default'], function(){
 	gulp.watch('./src/js/**/*.js', function(e){
 		gulp.run('uglify');
 	});
