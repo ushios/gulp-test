@@ -4,6 +4,7 @@ Gulp-test
 Dependencies
 ------------
 
+* npm
 * sass
 
 Get started.
