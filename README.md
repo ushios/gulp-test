@@ -4,8 +4,8 @@ Gulp-test
 Dependencies
 ------------
 
-* npm
-* sass
+* [npm](https://www.npmjs.org/)
+* [sass](http://sass-lang.com/)
 
 Get started.
 ------------
