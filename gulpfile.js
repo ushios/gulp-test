@@ -26,7 +26,7 @@ gulp.task('default',['uglify', 'minify-css', 'minify-html'], function(){
 
 });
 
-gulp.task('watch', ['connect'], function(){
+gulp.task('connect', ['pre-connect'], function(){
 	gulp.watch(__dirname + '/src/js/**/*.js', function(e){
 		gulp.run('uglify');
 		gulp.src(e.path).pipe(connect.reload());
@@ -40,6 +40,20 @@ gulp.task('watch', ['connect'], function(){
 	gulp.watch(__dirname + '/src/scss/**/*.scss', function(e){
 		gulp.run('minify-css');
 		gulp.src(e.path).pipe(connect.reload());
+	});
+});
+
+gulp.task('watch', function(){
+	gulp.watch(__dirname + '/src/js/**/*.js', function(e){
+		gulp.run('uglify');
+	});
+
+	gulp.watch(__dirname + '/src/html/**/*.html', function(e){
+		gulp.run('minify-html');
+	});
+
+	gulp.watch(__dirname + '/src/scss/**/*.scss', function(e){
+		gulp.run('minify-css');
 	});
 });
 
@@ -79,7 +93,7 @@ gulp.task('minify-css', function () {
 	.pipe(gulp.dest(__dirname + '/web/assets/css')); 
 });
 
-gulp.task('connect', ['default'], function() {
+gulp.task('pre-connect', ['default'], function() {
 	connect.server({
 		root: [__dirname + '/web/'],
 		port: 9001,
