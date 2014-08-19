@@ -12,27 +12,24 @@ Get started.
 
 ### 1. Install global npm packages.
 
-    $ npm install -g gulp browser-sync
+    $ npm install -g gulp
 
 ### 2. Install local npm packages
 
     $ npm install
 
 
-Using browser-sync
+Using livereload
 -------------------
 
     $ gulp watch
-    /* open new terminal */
-    $ cd web
-    $ browser-sync start --files="./**" --server
 
 Command log
 ------------
 
 ### Genral plugins.
 
-    $ npm install --save-dev gulp@3.6.2 gulp-util gulp-watch
+    $ npm install --save-dev gulp@3.6.2 gulp-util gulp-watch gulp-plumber gulp-connect
 
 ### Css plugins.
 

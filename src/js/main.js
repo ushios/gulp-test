@@ -1,7 +1,7 @@
 $(function(){
-	var message = 'Loaded!';
+	var message = 'Loaded this file!!!!';
 	console.log(message);
-	console.log('string output.');
+	console.log('string was outputed.');
 });
 
-console.log('main.js');
+console.log('main.js is here........');
