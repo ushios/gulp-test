@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gulputil = require('gulp-util');
+var concat = require('gulp-concat');
 
 // html
 var htmlhint = require('gulp-htmlhint');
@@ -33,8 +34,9 @@ gulp.task('watch', ['default'], function(){
 });
 
 gulp.task('uglify', ['js-hint'], function(){
-	return gulp.src(['./src/js/**/*.js'], {
+	return gulp.src(['./src/js/lib/*.js','./src/js/**/*.js'], {
 	})
+	.pipe(concat('main.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('./web/assets/js'));
 });
