@@ -43,7 +43,7 @@ gulp.task('connect', ['pre-connect'], function(){
 	});
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', ['default'], function(){
 	gulp.watch(__dirname + '/src/js/**/*.js', function(e){
 		gulp.run('uglify');
 	});
