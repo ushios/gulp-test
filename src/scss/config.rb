@@ -1,0 +1,1 @@
+generated_images_path = "web/assets/images";

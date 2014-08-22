@@ -33,8 +33,8 @@ var paths = {
 	compass: {
 		config: __dirname + '/src/scss/config.rb',
 		scss: 'src/scss/',
-		css: 'web/assets/css',
-		image: __dirname + '/src/images'
+		css: 'web/assets/css/',
+		image: 'src/images'
 	},
 
 	destCss: __dirname + '/web/assets/css',

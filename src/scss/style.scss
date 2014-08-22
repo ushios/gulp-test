@@ -1,3 +1,17 @@
+@import "compass";
+@import "compass/reset/";
+
+@import "icons/**/*.png";
+$icons: sprite-map("icons/**/*.png");
+
+.btn {
+  background: sprite($icons, icon_dislike_alt);
+  background-position: sprite-position( $icons, icon_dislike_alt );
+  height: image-height("icons/icon_dislike_alt.png");
+  width: image-width("icons/icon_dislike_alt.png");
+}
+ 
+
 .anchor
 {
   color: #cc3333;
