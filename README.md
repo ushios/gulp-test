@@ -6,6 +6,7 @@ Dependencies
 
 * [npm](https://www.npmjs.org/)
 * [sass](http://sass-lang.com/)
+* [compass](http://compass-style.org/)
 
 Get started.
 ------------
@@ -32,7 +33,7 @@ Command log
 
 ### Css plugins.
 
-    $ npm install --save-dev gulp-sass gulp-minify-css gulp-csso
+    $ npm install --save-dev gulp-compass gulp-minify-css gulp-csso
 
 ### Javascript plugins.
 

@@ -9,13 +9,13 @@ var htmlhint = require('gulp-htmlhint');
 var minifyHtml = require('gulp-minify-html');
 
 // css
-var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var csso = require('gulp-csso');
 
 // javascript
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglifyjs');
+var compass = require('gulp-compass');
 
 var onError = function (err) {  
 	gulputil.beep();
@@ -30,6 +30,10 @@ var paths = {
 	},
 	scss: [__dirname + '/src/scss/**/*.scss'],
 	html: [__dirname + '/src/html/**/*.html'],
+	compass: {
+		config: __dirname + '/src/scss/config.rb',
+		scss: 'src/scss/'
+	},
 
 	destCss: __dirname + '/web/assets/css',
 	destJs: __dirname + '/web/assets/js',
@@ -95,10 +99,17 @@ gulp.task('html-hint', function(){
 gulp.task('minify-css', function () { 
 	return gulp.src(paths.scss)
 	.pipe(plumber({errorHandler: onError}))
-	.pipe(sass())
+	.pipe(compass({
+		config_file: paths.compass.config,
+		comments: true,
+		compressed: true,
+		sass: paths.compass.scss,
+		css: 'web/assets/css'
+	}))
 	.pipe(minifyCss())
 	.pipe(csso())
 	.pipe(gulp.dest(paths.destCss)); 
+	;
 });
 
 gulp.task('pre-connect', ['default'], function() {

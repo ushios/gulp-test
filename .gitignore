@@ -1,6 +1,10 @@
 web/*
 web/assets/*
 
+
+# compass
+.sass-cache
+
 # npm
 lib-cov
 node_modules
