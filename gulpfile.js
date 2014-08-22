@@ -22,80 +22,92 @@ var onError = function (err) {
 	console.log(err);
 };
 
+var paths = {
+	connectServerRoot: [__dirname + '/web/'],
+	scripts: {
+		all: [__dirname + '/src/js/lib/*.js', __dirname + '/src/js/**/*.js'],
+		withoutLib: [__dirname + '/src/js/**/*.js','!'+ __dirname + '/src/js/lib/*.js']
+	},
+	scss: [__dirname + '/src/scss/**/*.scss'],
+	html: [__dirname + '/src/html/**/*.html'],
+
+	destCss: __dirname + '/web/assets/css',
+	destJs: __dirname + '/web/assets/js',
+	destHtml: __dirname + '/web'
+}
+
 gulp.task('default',['uglify', 'minify-css', 'minify-html'], function(){
 
 });
 
-gulp.task('connect', ['pre-connect'], function(){
-	gulp.watch(__dirname + '/src/js/**/*.js', function(e){
-		gulp.run('uglify');
-		gulp.src(e.path).pipe(connect.reload());
+gulp.task('watch', ['pre-connect'], function(){
+	gulp.watch(paths.scripts.all, function(e){
+		gulp.run('js-watch');
 	});
 
-	gulp.watch(__dirname + '/src/html/**/*.html', function(e){
-		gulp.run('minify-html');
-		gulp.src(e.path).pipe(connect.reload());
+	gulp.watch(paths.html, function(e){
+		gulp.run('html-watch');
 	});
 
-	gulp.watch(__dirname + '/src/scss/**/*.scss', function(e){
-		gulp.run('minify-css');
-		gulp.src(e.path).pipe(connect.reload());
+	gulp.watch(paths.scss, function(e){
+		gulp.run('css-watch');
 	});
 });
 
-gulp.task('watch', ['default'], function(){
-	gulp.watch(__dirname + '/src/js/**/*.js', function(e){
-		gulp.run('uglify');
-	});
+gulp.task('js-watch', ['uglify'], function(){
+	console.log('edited js.');
+	gulp.src(paths.scripts.all).pipe(connect.reload());
+});
 
-	gulp.watch(__dirname + '/src/html/**/*.html', function(e){
-		gulp.run('minify-html');
-	});
+gulp.task('html-watch', ['minify-html'], function(){
+	console.log('edited html.');
+	gulp.src(paths.html).pipe(connect.reload());
+});
 
-	gulp.watch(__dirname + '/src/scss/**/*.scss', function(e){
-		gulp.run('minify-css');
-	});
+gulp.task('css-watch', ['minify-css'], function(){
+	console.log('edited css.');
+	gulp.src(paths.scss).pipe(connect.reload());
 });
 
 gulp.task('uglify', ['js-hint'], function(){
-	return gulp.src([__dirname + '/src/js/lib/*.js', __dirname + '/src/js/**/*.js'], {
+	return gulp.src(paths.scripts.all, {
 	})
 	.pipe(concat('main.js'))
 	.pipe(plumber())
 	.pipe(uglify())
-	.pipe(gulp.dest(__dirname + '/web/assets/js'));
+	.pipe(gulp.dest(paths.destJs));
 });
 
 gulp.task('js-hint', function(){
-	return gulp.src([__dirname + '/src/js/**/*.js','!'+ __dirname + '/src/js/lib/*.js'])
+	return gulp.src(paths.scripts.withoutLib)
 	.pipe(jshint())
 	.pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('minify-html', ['html-hint'],function(){
-	return gulp.src([__dirname + '/src/html/**/*.html'])
+	return gulp.src(paths.html)
 	.pipe(minifyHtml())
-	.pipe(gulp.dest(__dirname + '/web'))
+	.pipe(gulp.dest(paths.destHtml))
 })
 
 gulp.task('html-hint', function(){
-	return gulp.src([__dirname + '/src/html/**/*.html'])
+	return gulp.src(paths.html)
 	.pipe(htmlhint())
 	.pipe(htmlhint.reporter())
 })
 
 gulp.task('minify-css', function () { 
-	return gulp.src(__dirname + '/src/scss/*.scss')
+	return gulp.src(paths.scss)
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(sass())
 	.pipe(minifyCss())
 	.pipe(csso())
-	.pipe(gulp.dest(__dirname + '/web/assets/css')); 
+	.pipe(gulp.dest(paths.destCss)); 
 });
 
 gulp.task('pre-connect', ['default'], function() {
 	connect.server({
-		root: [__dirname + '/web/'],
+		root: paths.connectServerRoot,
 		port: 9001,
 		livereload: true
 	});

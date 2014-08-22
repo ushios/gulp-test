@@ -4,4 +4,4 @@ $(function(){
 	console.log('string was outputed.');
 });
 
-console.log('main.js is here........');
+console.log('dd');
