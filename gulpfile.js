@@ -42,30 +42,27 @@ gulp.task('default',['uglify', 'minify-css', 'minify-html'], function(){
 
 gulp.task('watch', ['pre-connect'], function(){
 	gulp.watch(paths.scripts.all, function(e){
-		gulp.run('js-watch');
+		gulp.start('js-watch');
 	});
 
 	gulp.watch(paths.html, function(e){
-		gulp.run('html-watch');
+		gulp.start('html-watch');
 	});
 
 	gulp.watch(paths.scss, function(e){
-		gulp.run('css-watch');
+		gulp.start('css-watch');
 	});
 });
 
 gulp.task('js-watch', ['uglify'], function(){
-	console.log('edited js.');
 	gulp.src(paths.scripts.all).pipe(connect.reload());
 });
 
 gulp.task('html-watch', ['minify-html'], function(){
-	console.log('edited html.');
 	gulp.src(paths.html).pipe(connect.reload());
 });
 
 gulp.task('css-watch', ['minify-css'], function(){
-	console.log('edited css.');
 	gulp.src(paths.scss).pipe(connect.reload());
 });
 
@@ -80,8 +77,7 @@ gulp.task('uglify', ['js-hint'], function(){
 
 gulp.task('js-hint', function(){
 	return gulp.src(paths.scripts.withoutLib)
-	.pipe(jshint())
-	.pipe(jshint.reporter('jshint-stylish'));
+	.pipe(plumber())
 });
 
 gulp.task('minify-html', ['html-hint'],function(){
