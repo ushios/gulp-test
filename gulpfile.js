@@ -32,7 +32,9 @@ var paths = {
 	html: [__dirname + '/src/html/**/*.html'],
 	compass: {
 		config: __dirname + '/src/scss/config.rb',
-		scss: 'src/scss/'
+		scss: 'src/scss/',
+		css: 'web/assets/css',
+		image: __dirname + '/src/images'
 	},
 
 	destCss: __dirname + '/web/assets/css',
@@ -104,7 +106,8 @@ gulp.task('minify-css', function () {
 		comments: true,
 		compressed: true,
 		sass: paths.compass.scss,
-		css: 'web/assets/css'
+		css: paths.compass.css,
+		image: paths.compass.image
 	}))
 	.pipe(minifyCss())
 	.pipe(csso())
