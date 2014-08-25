@@ -78,7 +78,7 @@ gulp.task('uglify', ['js-hint'], function(){
 	.pipe(plumber())
 	.pipe(concat('main.js'))
 	.pipe(uglify({
-		preserveComments: "some"
+		'preserveComments': 'some'
 	}))
 	.pipe(gulp.dest(paths.destJs));
 });
