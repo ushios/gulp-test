@@ -75,8 +75,8 @@ gulp.task('css-watch', ['minify-css'], function(){
 gulp.task('uglify', ['js-hint'], function(){
 	return gulp.src(paths.scripts.all, {
 	})
-	.pipe(concat('main.js'))
 	.pipe(plumber())
+	.pipe(concat('main.js'))
 	.pipe(uglify({
 		preserveComments: "some"
 	}))
@@ -92,6 +92,7 @@ gulp.task('js-hint', function(){
 
 gulp.task('minify-html', ['html-hint'],function(){
 	return gulp.src(paths.html)
+	.pipe(plumber())
 	.pipe(minifyHtml())
 	.pipe(gulp.dest(paths.destHtml))
 })
