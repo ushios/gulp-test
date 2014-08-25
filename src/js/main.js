@@ -4,4 +4,4 @@ $(function(){
 	console.log('string was outputed.');
 });
 
-console.log('hello compass');
+console.log('hello compass.');

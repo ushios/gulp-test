@@ -11,11 +11,11 @@ var minifyHtml = require('gulp-minify-html');
 // css
 var minifyCss = require('gulp-minify-css');
 var csso = require('gulp-csso');
+var compass = require('gulp-compass');
 
 // javascript
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglifyjs');
-var compass = require('gulp-compass');
 
 var onError = function (err) {  
 	gulputil.beep();
@@ -84,6 +84,8 @@ gulp.task('uglify', ['js-hint'], function(){
 gulp.task('js-hint', function(){
 	return gulp.src(paths.scripts.withoutLib)
 	.pipe(plumber())
+	.pipe(jshint())
+	.pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('minify-html', ['html-hint'],function(){
