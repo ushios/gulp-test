@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var gulputil = require('gulp-util');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
-var connect = require('gulp-connect');
+var webserver = require('gulp-webserver');
 
 // html
 var htmlhint = require('gulp-htmlhint');
@@ -61,15 +61,15 @@ gulp.task('watch', ['pre-connect'], function(){
 });
 
 gulp.task('js-watch', ['uglify'], function(){
-	gulp.src(paths.scripts.all).pipe(connect.reload());
+	//gulp.src(paths.scripts.all).pipe(connect.reload());
 });
 
 gulp.task('html-watch', ['minify-html'], function(){
-	gulp.src(paths.html).pipe(connect.reload());
+	//gulp.src(paths.html).pipe(connect.reload());
 });
 
 gulp.task('css-watch', ['minify-css'], function(){
-	gulp.src(paths.scss).pipe(connect.reload());
+	//gulp.src(paths.scss).pipe(connect.reload());
 });
 
 gulp.task('uglify', ['js-hint'], function(){
@@ -77,7 +77,9 @@ gulp.task('uglify', ['js-hint'], function(){
 	})
 	.pipe(concat('main.js'))
 	.pipe(plumber())
-	.pipe(uglify())
+	.pipe(uglify({
+		preserveComments: "some"
+	}))
 	.pipe(gulp.dest(paths.destJs));
 });
 
@@ -118,9 +120,9 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('pre-connect', ['default'], function() {
-	connect.server({
-		root: paths.connectServerRoot,
-		port: 9001,
-		livereload: true
-	});
+	gulp.src('web') //Webサーバーで表示するサイトのルートディレクトリを指定
+	.pipe(webserver({
+		livereload: true,
+		open: true
+	}));
 });

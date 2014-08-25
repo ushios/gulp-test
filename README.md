@@ -32,7 +32,7 @@ Command log
 
 ### Genral plugins.
 
-    $ npm install --save-dev gulp@3.6.2 gulp-util gulp-watch gulp-plumber gulp-connect
+    $ npm install --save-dev gulp@3.6.2 gulp-util gulp-watch gulp-plumber gulp-webserver
 
 ### Css plugins.
 
