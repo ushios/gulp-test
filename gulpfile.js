@@ -78,7 +78,7 @@ gulp.task('uglify', ['js-hint'], function(){
 	.pipe(plumber())
 	.pipe(concat('main.js'))
 	.pipe(uglify({
-		'preserveComments': 'some'
+		preserveComments: 'some'
 	}))
 	.pipe(gulp.dest(paths.destJs));
 });
@@ -121,7 +121,7 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('pre-connect', ['default'], function() {
-	gulp.src('web') //Webサーバーで表示するサイトのルートディレクトリを指定
+	gulp.src('web')
 	.pipe(webserver({
 		livereload: true,
 		open: true
